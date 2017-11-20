@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.just.common.mq" />
+	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!--<property name="brokerURL"
+			value="tcp://${mq.url}?jms.prefetchPolicy.all=10&amp;wireFormat.maxInactivityDurationInitalDelay=20000" />-->
+		<property name="brokerURL"
+				  value="failover:(tcp://${mq.url1}?wireFormat.maxInactivityDurationInitalDelay=20000,tcp://${mq.url2}?wireFormat.maxInactivityDurationInitalDelay=20000,tcp://${mq.url3}?wireFormat.maxInactivityDurationInitalDelay=20000)?initialReconnectDelay=1000&amp;jms.prefetchPolicy.all=50" />
+		<property name = "userName" value = "${mq.userName}"/>
+		<property name = "password" value = "${mq.password}"/>
+		<property name="sendTimeout" value="1000"/>
+		<property name="useAsyncSend" value="true" />
+	</bean>
+	
+	
+	<!-- Spring JmsTemplate 的消息生产者 start -->
+	<!-- 定义JmsTemplate的Queue类型 -->
+	<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<constructor-arg ref="jmsFactory" />
+		<!-- 非pub/sub模型（发布/订阅），即队列模式 -->
+		<property name="pubSubDomain" value="false" />
+	</bean>
+
+	<!-- 定义JmsTemplate的Topic类型 -->
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<constructor-arg ref="jmsFactory" />
+		<!-- pub/sub模型（发布/订阅） -->
+		<property name="pubSubDomain" value="true" />
+	</bean>
+	<!--Spring JmsTemplate 的消息生产者 end -->
+
+	<!-- 消息消费者 start -->
+	<!-- 定义Queue监听器 -->
+	<jms:listener-container destination-type="queue"
+		container-type="default" connection-factory="jmsFactory"
+		acknowledge="auto">
+		<!--<jms:listener destination="testQueue" ref="queueReceiverTest" />
+		<jms:listener destination="testQueueMap" ref="queueReceiverMap" />-->
+	</jms:listener-container>
+
+	<!-- 定义Topic监听器 -->
+	<!--<jms:listener-container destination-type="topic"
+		container-type="default" connection-factory="jmsFactory"
+		acknowledge="auto">
+		<jms:listener destination="testTopic" ref="topicReceiver1" />
+		<jms:listener destination="testTopic" ref="topicReceiver2" />
+	</jms:listener-container>-->
+	<!-- 消息消费者 end -->
+
+
+</beans>

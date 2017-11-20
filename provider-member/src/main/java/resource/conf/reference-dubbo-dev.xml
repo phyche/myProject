@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!--引用provider-common的service-->
+	<dubbo:reference retries="0"  id="redisService" check="false" interface="com.test.common.service.RedisService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="fileService" check="false" interface="com.test.common.service.FileService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="ftpService" check="false" interface="com.test.common.service.FtpService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="liquidationService" check="false" interface="com.test.common.service.LiquidationService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="excelService" check="false" interface="com.test.common.service.ExcelService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="redisLockService" check="false" interface="com.test.common.service.RedisLockService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+
+	<!--引用provider-db的service-->
+	<dubbo:reference retries="0" id="ordsTestService" check="false" interface="com.test.db.service.OrdsTestService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+
+</beans>

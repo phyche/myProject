@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.common.dao.OrdsTestMapper">
+
+	<!--<resultMap type="com.test.db.entity.OrdsTest" id="resultMap">
+		<id property="id" column="ID" />
+		<result property="created" column="CREATED" />
+		<result property="tname" column="TNAME" />
+	</resultMap>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.test.db.entity.OrdsTest">
+		INSERT INTO ORDS_TEST
+		(CREATED, TNAME)
+		VALUES
+		(
+		SYSDATE(),
+		#{tname, jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.test.db.entity.OrdsTest">
+		UPDATE ORDS_TEST
+		<set>
+			<if test="tname !=null and tname !=''">
+				TNAME		=		#{tname, jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id}
+	</update>
+
+	<select id="query" resultMap="resultMap" parameterType="com.test.db.entity.OrdsTestDTO">
+		SELECT
+		T.*
+		FROM ORDS_TEST T
+		WHERE 1=1
+		<if test="dto.tname != null and dto.tname !=''"> AND T.TNAME = #{dto.tname}</if>
+		<choose>
+			<when test="dto.orders != null and dto.orders !='' ">
+				ORDER BY ${dto.orders}
+			</when>
+			<otherwise>
+				ORDER BY T.CREATED DESC
+			</otherwise>
+		</choose>
+		LIMIT #{beginNum},#{rowNum}
+	</select>-->
+</mapper>

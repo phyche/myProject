@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:jms="http://www.springframework.org/schema/jms"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms-4.0.xsd">
+
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.test.common.mq.*" />
+
+	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!--<property name="brokerURL"
+			value="tcp://${mq.url}?jms.prefetchPolicy.all=10&amp;wireFormat.maxInactivityDurationInitalDelay=20000" />-->
+		<property name="brokerURL"
+			value="failover:(tcp://${mq.url1}?wireFormat.maxInactivityDurationInitalDelay=20000,tcp://${mq.url2}?wireFormat.maxInactivityDurationInitalDelay=20000,tcp://${mq.url3}?wireFormat.maxInactivityDurationInitalDelay=20000)?initialReconnectDelay=1000&amp;jms.prefetchPolicy.all=50" />
+		<property name = "userName" value = "${mq.userName}"/>
+		<property name = "password" value = "${mq.password}"/>
+		<property name="sendTimeout" value="1000"/>
+		<property name="useAsyncSend" value="true" />
+	</bean>
+	
+	
+	<!-- Spring JmsTemplate 的消息生产者 start -->
+	<!-- 定义JmsTemplate的Queue类型 -->
+	<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<constructor-arg ref="jmsFactory" />
+		<!-- 非pub/sub模型（发布/订阅），即队列模式 -->
+		<property name="pubSubDomain" value="false" />
+	</bean>
+
+	<!-- 定义JmsTemplate的Topic类型 -->
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<constructor-arg ref="jmsFactory" />
+		<!-- pub/sub模型（发布/订阅） -->
+		<property name="pubSubDomain" value="true" />
+	</bean>
+	<!--Spring JmsTemplate 的消息生产者 end -->
+
+	<!-- 消息消费者 start -->
+	<!-- 定义Queue监听器 -->
+
+	<jms:listener-container destination-type="queue"
+		container-type="default" connection-factory="jmsFactory"
+		acknowledge="auto" concurrency="${mq.concurrency}" task-executor="threadPoolTaskExecutor">
+
+		<!--provider-justgo的监听者 -->
+		<jms:listener destination="jgOrdsTestDestination" ref="jgOrdsTestListener" />
+
+	</jms:listener-container>
+
+	<bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 线程池维护线程的最少数量 -->
+		<property name="corePoolSize" value="${threadPool.corePoolSize}" />
+		<!-- 允许的空闲时间 -->
+		<property name="keepAliveSeconds" value="${threadPool.keepAliveSeconds}" />
+		<!-- 线程池维护线程的最大数量 -->
+		<property name="maxPoolSize" value="${threadPool.maxPoolSize}" />
+		<!-- 缓存队列 -->
+		<property name="queueCapacity" value="${threadPool.queueCapacity}" />
+		<!-- 对拒绝task的处理策略 -->
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy"/>
+		</property>
+		<!--Reject策略预定义有四种：
+(1)ThreadPoolExecutor.AbortPolicy策略，是默认的策略,处理程序遭到拒绝将抛出运行时 RejectedExecutionException。
+(2)ThreadPoolExecutor.CallerRunsPolicy策略 ,调用者的线程会执行该任务,如果执行器已关闭,则丢弃.
+(3)ThreadPoolExecutor.DiscardPolicy策略，不能执行的任务将被丢弃.
+(4)ThreadPoolExecutor.DiscardOldestPolicy策略，如果执行程序尚未关闭，则位于工作队列头部的任务将被删除，然后重试执行程序（如果再次失败，则重复此过程）.
+-->
+	</bean>
+
+	<!-- 定义Topic监听器 -->
+	<!--<jms:listener-container destination-type="topic"
+		container-type="default" connection-factory="jmsFactory"
+		acknowledge="auto">
+		<jms:listener destination="testTopic" ref="topicReceiver1" />
+		<jms:listener destination="testTopic" ref="topicReceiver2" />
+	</jms:listener-container>-->
+	<!-- 消息消费者 end -->
+
+</beans>

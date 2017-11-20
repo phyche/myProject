@@ -1,0 +1,22 @@
+{
+    "namespace": "com.cyber.source.avro",
+    "protocol": "LogProtocol",
+    "doc": "This is a message.",
+    "name": "Message",
+ 
+    "types": [
+        {"name":"LogEntity", "type":"record",
+            "fields":[
+                {"name":"body", "type":["string", "null"]}
+        ]}
+        
+    ],
+ 
+    "messages":    {
+        "sendLogger":{
+            "doc" : "test",
+            "request" :[{"name":"logentity","type":"LogEntity"}],
+            "response" :"LogEntity"
+        }         
+    }   
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="justgoProviderCommon" />
+
+	<!-- 使用zookeeper广播注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${zookeeperUrl}" timeout="${zookeeperTimeout}" register="false"/>
+	<!-- 	<dubbo:registry address="zookeeper://192.168.125.128:2181?backup=192.168.125.128:2182,192.168.125.128:2183" /> -->
+
+	<!-- 用dubbo协议在40881端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${dubboPortCommon}" />
+
+	<dubbo:service interface="com.test.common.service.RedisService" ref="redisService" version="${ver.test}" />
+	<bean id="redisService" class="com.test.common.service.impl.RedisServiceImpl" />
+
+	<dubbo:service interface="com.test.common.service.RedisLockService" ref="redisLockService" version="${ver.test}" />
+	<bean id="redisLockService" class="com.test.common.service.impl.RedisLockServiceImpl" />
+
+	<dubbo:service interface="com.test.common.service.FtpService" ref="ftpService" version="${ver.test}" />
+	<bean id="ftpService" class="com.test.common.service.impl.FtpServiceImpl" />
+
+	<dubbo:service interface="com.test.common.service.FileService" ref="fileService" version="${ver.test}" />
+	<bean id="fileService" class="com.test.common.service.impl.FileServiceImpl" />
+
+	<dubbo:service interface="com.test.common.service.LiquidationService" ref="liquidationService" version="${ver.test}" />
+	<bean id="liquidationService" class="com.test.common.service.impl.LiquidationServiceImpl" />
+
+	<dubbo:service interface="com.test.common.service.ExcelService" ref="excelService" version="${ver.test}" />
+	<bean id="excelService" class="com.test.common.service.impl.ExcelServiceImpl" />
+</beans>
