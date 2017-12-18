@@ -12,8 +12,6 @@
 		<property name="locations">
 			<list>
 				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/just.properties</value>
-				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/tsm.properties</value>
-				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/liquidation.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -22,8 +20,6 @@
 		<property name="locations">
 			<list>
 				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/just.properties</value>
-				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/tsm.properties</value>
-				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/liquidation.properties</value>
 			</list>
 		</property>
 	</bean>

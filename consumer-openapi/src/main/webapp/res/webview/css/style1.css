@@ -1,0 +1,44 @@
+/*style*/
+html { background-color:#fff;}
+body { font-family:Microsoft Yahei,SimHei,Monaco, tahoma, arial,simsum;  }
+body, div, dd, dl, ul, li, h2, p, dl, dt, dd { margin:0; padding:0; }
+a{ text-decoration:none; }
+.mt10px{ margin-top:10px;}
+.mt20px{ margin-top:20px;}
+table,tr,td{ padding:0; margin:0;}
+/*content*/
+.wrap{ padding:60px 30px 60px 30px; font-size:16px; color:#666; line-height:1.8; max-width:1242px; margin:0 auto; }
+
+.pb10{ padding-bottom:10px;}
+.pb20{ padding-bottom:20px;}
+.pb40{ padding-bottom:40px;}
+.pt20{ padding-bottom:20px;}
+.pt30{ padding-top:30px;}
+.pt40{ padding-top:40px;}
+.pt60{ padding-top:60px;}
+
+.fw600{font-weight:500;} 
+.fwbold{font-weight:bold;} 
+
+.tacenter{ text-align:center;}
+.t_indent10{ text-indent:10px;}
+.diandian{background:url(../images/icon.png) no-repeat left 22px; padding-left:10px;}
+
+.t_indent36{ text-indent:36px;}
+.c_fd5b44{ color:#fd5b44;}
+.c_111{ color:#111;}
+.c_333{ color:#333;}
+.c_2a2e49{color:#2a2e49;}
+.c_aaa9af{color:#aaa9af;}
+.c_45556c{color:#45556c;}
+
+.fs14{ font-size:14px;}
+.fs28{ font-size:28px;}
+.fs30{ font-size:30px;}
+.fs32{ font-size:32px;}
+.fs48{ font-size:48px;}
+.button{ width:100%;
+height:80px;text-align:center;color:#fff;border:none;border-radius:10px;background:#01a0e2; font-size:34px; color:#fff;font-weight:bold;
+}
+.button:focus{ outline:none;}
+

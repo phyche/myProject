@@ -11,7 +11,7 @@
 	</settings>
 	
 	<plugins>
-	  <plugin interceptor="com.just.interceptor.AutoMapperInterceptor"></plugin>
+	  <plugin interceptor="com.myproject.interceptor.AutoMapperInterceptor"></plugin>
 	</plugins>
 	<!-- mapper已经在spring-mybatis.xml中的sqlSessionFactory配置，这里不再需要配置 -->
 <!-- 	<mappers> -->

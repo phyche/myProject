@@ -16,7 +16,7 @@
            	            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<!-- 自动扫描 -->
 	<!-- <context:annotation-config /> -->
-	<context:component-scan base-package="com.test" />
+	<context:component-scan base-package="com.test.common.dao.*" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" >
@@ -54,7 +54,7 @@
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.just.common.dao" />
+		<property name="basePackage" value="com.test.common.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 

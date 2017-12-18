@@ -14,9 +14,4 @@
 		<property name="basePath" value="${ftp.basePath}" />
 		<property name="fileLocalBasePath" value="${file.local.basePath}" />
 	</bean>
-	<bean id="liquidationConfig" class="com.test.common.entity.LiquidationConfig">
-		<property name="companyCode" value="${liquidation.companyCode}" />
-		<property name="depositLengthPreRow" value="${liquidation.deposit.lengthPreRow}" />
-		<property name="depositMcc" value="${liquidation.deposit.mcc}" />
-	</bean>
 </beans>

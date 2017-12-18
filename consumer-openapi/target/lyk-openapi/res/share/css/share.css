@@ -1,0 +1,55 @@
+/*style*/
+html{ height:100%; padding:0; margin:0;  }
+*{border:0;}
+body { font-family:Microsoft Yahei, Monaco, tahoma, arial,simsum, \5b8b\4f53, sans-serif; height:100%; background:#fff; }
+body, div, dd, dl, ul, li, h2, p, dl, dt, dd { margin:0; padding:0; list-style:none; }
+a { text-decoration:none;  }
+img{ border:0; padding:0; margin:0;}
+.mt10{ margin-top:10px !important;}
+.border_t{ border-top:1pt solid #d0d0d0; }
+.border_b{ border-bottom:1pt solid #d0d0d0; }
+.clear{height:0; overflow:hidden; clear:both}
+
+/*下载浮动窗口*/
+.fenxiang_down{ width:100%; position:fixed; bottom:0; height:60px; background:#fff;  z-index:9999; overflow:hidden;}
+.fenxiang_down_wrap{ max-width:600px; position:relative; margin:0 auto;  overflow:hidden; border-top:1px solid #d0d0d0;}
+.fenxiang_down_cont{ padding:10px 3%; }
+.fenxiang_down_logo{ float:left; margin-right:10px;}
+.fenxiang_down_txt{ float:left; font-size:12px; color:#555; line-height:20px;}
+.fenxiang_down_anniu{  margin-top:10px; position:absolute; right:3%;}
+.fenxiang_down_anniu a{ display:block; border-radius:4px; padding:5px 8px; background:#97bd2f; font-size:12px; color:#fff;}
+.fenxiang_down_height{ height:60px; width:100%;}
+
+/*顶部图片*/
+.jingqu_pic{ max-width:600px; height:300px; margin:0 auto; text-align:center; position:relative;}
+.jingqu_pic_img{ width:100%; height:100% !important;}
+.jingqu_pic_img img{ width:100%; height:100% !important;}
+
+/*图片上浮动文字*/
+.fudongceng{max-width:600px; width:100%; height:40px; line-height:40px; position:absolute; z-index:2; bottom:0;}
+.jingqu_title{  font-size:20px; color:#fff; text-align:left; text-indent:3%; z-index:2; }
+.yinyingceng{ max-width:600px; width:100%; height:40px; position:relative; margin-top:-40px; z-index:-1; background:#000;
+filter:alpha(opacity=50); /*ie滤镜，透明度50%*/
+-moz-opacity:0.5; /*Firefox私有，透明度50%*/
+opacity:0.5;/*其他，透明度50%*/}
+
+.wrap{ max-width:600px; width:100%; margin:0 auto; overflow:hidden;}
+.jingqu_jianjie{ padding:10px 3%; color:#555555; line-height:1.8; font-size:14px;  overflow:hidden;}
+
+.jingqu_list{padding:10px 3% 10px; color:#555555; line-height:1.8; font-size:14px; overflow:hidden;}
+.jingqu_list span{ font-size:12px;}
+
+/*推荐景点*/
+.tuijianjingdian{ max-width:600px; overflow:hidden;}
+.tuijianjingdian_img{ }
+#container{
+	position:relative;
+}
+.tuijianjingdian .tuijianjingdian_img{float:left; width:98.5%;  padding:0 1.5% 3%; overflow:hidden;}
+.tuijianjingdian #container{float:left; width:98.5%;  padding:0 1.5% 3%; overflow:hidden;}
+.tuijianjingdian #container div{float:left; width:98.5%;  padding:0 1.5% 3%; overflow:hidden;}
+.tuijianjingdian div img{ float:left; display:block; width:100%; 
+border-radius: 8px;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+}

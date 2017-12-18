@@ -19,7 +19,11 @@ public enum RedisEnum {
     FK_TO_PAY_ORDER("FK_TO_PAY_ORDER", "", "支付订单信息的redis缓存key"),
     FK_PAY_ORDER_RESULT_FLAG("FK_PAY_ORDER_RESULT_FLAG", "", "支付订单结果的标识的redis缓存key"),
     FK_PAY_ORDER_MQ_FLAG("FK_PAY_ORDER_MQ_FLAG", "", "支付订单MQ的标识的redis缓存key"),
-    FK_TO_PLACE_ORDER("FK_TO_PLACE_ORDER", "", "下单信息的redis缓存key");
+    FK_TO_PLACE_ORDER("FK_TO_PLACE_ORDER", "", "下单信息的redis缓存key"),
+    VERSION_KEY("versionKey", "", "版本控制的redis缓存的key"),
+    REDIS_KAPTCHA_KEY("redisKaptchaKey", "", "图形验证码"),
+    REDIS_SER_CODE_KEY("redisSerCodeKey", "", "接口拦截的redis缓存的key"),;
+
 
     private RedisEnum(String code, String flag, String description) {
         this.code = code;

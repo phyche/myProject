@@ -12,7 +12,6 @@
 			<list>
 				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/just.properties</value>
 				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/ftp.properties</value>
-				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/liquidation.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -22,7 +21,6 @@
 			<list>
 				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/just.properties</value>
 				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/ftp.properties</value>
-				<value>http://172.16.0.106:7002/pic/static/resources/justgoproperties/liquidation.properties</value>
 			</list>
 		</property>
 	</bean>

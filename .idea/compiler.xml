@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="consumer-jobs" />
+        <module name="consumer-openapi" />
         <module name="interface" />
         <module name="provider-common" />
         <module name="provider-db" />
@@ -16,6 +18,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.8" />
+      <module name="consumer-jobs" target="1.8" />
+      <module name="consumer-openapi" target="1.8" />
       <module name="interface" target="1.8" />
       <module name="myProject" target="1.8" />
       <module name="provider-common" target="1.8" />

@@ -22,6 +22,11 @@
 			<artifactId>common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!--<dependency>
+			<groupId>com.weconex</groupId>
+			<artifactId>provider-db</artifactId>
+			<version>${project.version}</version>
+		</dependency>-->
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>

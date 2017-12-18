@@ -29,9 +29,6 @@
 	<dubbo:service interface="com.test.common.service.FileService" ref="fileService" version="${ver.test}" />
 	<bean id="fileService" class="com.test.common.service.impl.FileServiceImpl" />
 
-	<dubbo:service interface="com.test.common.service.LiquidationService" ref="liquidationService" version="${ver.test}" />
-	<bean id="liquidationService" class="com.test.common.service.impl.LiquidationServiceImpl" />
-
 	<dubbo:service interface="com.test.common.service.ExcelService" ref="excelService" version="${ver.test}" />
 	<bean id="excelService" class="com.test.common.service.impl.ExcelServiceImpl" />
 </beans>

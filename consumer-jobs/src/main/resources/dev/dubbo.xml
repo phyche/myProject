@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="justgoConsumerJobs" />
+
+	<!-- 使用zookeeper广播注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${zookeeperUrl}" timeout="${zookeeperTimeout}" register="false"/>
+	<!-- <dubbo:registry address="zookeeper://192.168.125.128:2181?backup=192.168.125.128:2182,192.168.125.128:2183" 
+		/> -->
+
+	<!--引用provider-common的service-->
+	<dubbo:reference retries="0"  id="redisService" check="false" interface="com.test.common.service.RedisService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+
+	<!--引用provider-db的service-->
+	<dubbo:reference retries="0" id="ordsOrderPayService" check="false" interface="com.test.db.service.OrdsTestService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+	<dubbo:reference retries="0" id="myService" check="false" interface="com.test.db.service.MyService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+
+	<!--引用provider-member的service-->
+	<dubbo:reference retries="0" id="memberService" check="false" interface="com.test.member.service.MemberService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+</beans>

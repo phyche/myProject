@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="lykOpenapiServices" />
+
+	<!-- 使用zookeeper广播注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${zookeeperUrl}" timeout="${zookeeperTimeout}" register="false"/>
+	<!-- <dubbo:registry address="zookeeper://192.168.125.128:2181?backup=192.168.125.128:2182,192.168.125.128:2183" 
+		/> -->
+
+	<!--日志跟踪过滤器-->
+	<dubbo:consumer filter="logFilter" retries="0"/>
+
+	<!-- 声明需要暴露的服务接口 -->
+	<!--provider-common-->
+	<dubbo:reference retries="0"  id="redisService" check="false" interface="com.test.common.service.RedisService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="redisLockService" check="false" interface="com.test.common.service.RedisLockService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="commonService" check="false" interface="com.test.common.service.CommonService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="excelService" check="false" interface="com.test.common.service.ExcelService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="fileService" check="false" interface="com.test.common.service.FileService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="ftpService" check="false" interface="com.test.common.service.FtpService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="sendsmsService" check="false" interface="com.test.common.service.SendsmsService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+	<dubbo:reference retries="0"  id="snService" check="false" interface="com.test.common.service.SnService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortCommon}"/>
+
+	<!--provider-db-->
+	<dubbo:reference retries="0"  id="ordsTestService" check="false" interface="com.test.db.service.OrdsTestService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+	<dubbo:reference retries="0"  id="myService" check="false" interface="com.test.db.service.MyService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+
+	<!--provider-member-->
+	<!--<dubbo:reference retries="0"  id="myService" check="false" interface="com.test.db.service.MyService" version="${ver.test}" timeout='${dubbo.timeout}' url="dubbo://localhost:${dubboPortDb}"/>
+-->
+</beans>

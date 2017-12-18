@@ -1,0 +1,25 @@
+/*style*/
+html { background-color:#fff;}
+body { font-family:Microsoft Yahei,Monaco, tahoma, arial,simsum;  }
+body, div, dd, dl, ul, li, h2, p, dl, dt, dd { margin:0; padding:0; }
+a{ text-decoration:none; }
+.mt10px{ margin-top:10px;}
+.mt20px{ margin-top:20px;}
+.mb10{ margin-bottom:10px;}
+.mb20{ margin-bottom:20px;}
+table,tr,td{ padding:0; margin:0;}
+/*content*/
+.wrap{ padding:10px; font-size:14px; color:#666; line-height:1.8;}
+
+.t_indent28{ text-indent:28px;}
+.t_indent40{ text-indent:40px;}
+.t_indent60{ text-indent:60px;}
+.t_indent80{ text-indent:80px;}
+.c_fd5b44{ color:#fd5b44;}
+.c_333{ color:#333;}
+.c_666{ color:#666;}
+
+.fs20{ font-size:20px;}
+.fs24{ font-size:24px;}
+
+.textc{ text-align:center;}

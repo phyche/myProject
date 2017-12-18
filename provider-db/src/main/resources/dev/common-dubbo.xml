@@ -20,4 +20,7 @@
 	<dubbo:service interface="com.test.db.service.OrdsTestService" ref="ordsTestService" version="${ver.test}" />
 	<bean id="ordsTestService" class="com.test.common.service.impl.OrdsTestServiceImpl" />
 
+	<dubbo:service interface="com.test.db.service.MyService" ref="myService" version="${ver.test}" />
+	<bean id="myService" class="com.test.common.service.impl.MyServiceImpl" />
+
 </beans>

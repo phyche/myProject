@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+<!--	<bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		&lt;!&ndash; redis 配置 &ndash;&gt;
+		<property name="hostName" value="${redis.host}" />
+		<property name="port" value="${redis.port}" />
+	</bean>-->
+	<import resource="conf/spring-activemq.xml" />
+	<import resource="classpath*:conf/applicationContext-job.xml" />
+
+</beans>

@@ -127,6 +127,19 @@ public class DateUtil {
 		return now.getTime();
 	}
 
+	/**
+	 * 生成系统跟踪号  17位时间戳 + 3位随机数
+	 * @return
+	 */
+	public static String getRandomTraceId(){
+		String id="";
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+		String temp = sf.format(new Date());
+		int random=(int) ((Math.random()*9+1)*100);
+		id=temp+random;
+		return id;
+	}
+
 	public static void main(String[] args) {
 		System.out.println(DateUtil.makeUpTime());
 	}

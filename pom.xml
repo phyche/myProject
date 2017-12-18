@@ -20,6 +20,8 @@
 		<module>provider-common</module>
 		<module>provider-member</module>
 		<module>provider-tools-activemq</module>
+		<module>consumer-jobs</module>
+		<module>consumer-openapi</module>
 	</modules>
 	<distributionManagement>
 		<repository>

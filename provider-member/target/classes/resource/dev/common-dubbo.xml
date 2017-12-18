@@ -21,7 +21,7 @@
 
 	<dubbo:provider filter="exceptionFilter"></dubbo:provider>
 
-	<dubbo:service interface="com.test.member.service.MyService" ref="myService" version="${ver.test}" />
-	<bean id="jgOrderService" class="com.test.common.service.impl.MyServiceImpl" />
+	<dubbo:service interface="com.test.member.service.MemberService" ref="memberService" version="${ver.test}" />
+	<bean id="memberService" class="com.test.common.service.impl.MemberServiceImpl" />
 
 </beans>

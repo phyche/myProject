@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!--<property name="LOG_HOME" value="d:/log" />-->
+    <!--<property name="LOG_HOME" value="/hjustcvas/dubboServiceProvider/logs/consumerOpenApi" />-->
+    <property name="LOG_HOME" value="G://provider-logs/myProjectdev/consumerJobsJustGo" />
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+       <!-- 日志输出编码 -->  
+       <Encoding>UTF-8</Encoding>   
+        <layout class="ch.qos.logback.classic.PatternLayout">   
+             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--> 
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n   
+            </pattern>   
+        </layout>   
+    </appender>
+    <!-- 出错日志 appender  -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <!-- log.dir 在maven profile里配置 -->
+            <fileNamePattern>${LOG_HOME}/error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!-- info日志 appender  -->
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${LOG_HOME}/info-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!-- debug日志 appender  -->
+    <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${LOG_HOME}/debug-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印debugger日志 -->
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- debug日志 appender  -->
+    <appender name="PAY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${LOG_HOME}/pay-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 用户行为日志JMS配置 -->
+	<appender name="behaviorjms" class="com.just.log.UserBehaviorJMSQueueAppender">
+		 
+
+	</appender>
+	
+	 <!-- 用户业务日志JMS配置 -->
+	<appender name="buinessisjms" class="com.just.log.UserBusinessJMSQueueAppender">
+	   
+	</appender>
+	<!--  
+	 <logger name="com.cyber.controller.base.BaseHandlerInterceptorAdapter" level="INFO" additivity="true">
+		<appender-ref ref="behaviorjms"></appender-ref>
+		
+		<appender-ref ref="STDOUT"></appender-ref>
+		 
+	</logger>
+	  -->
+	<!--<logger name="com.cyber.log" level="INFO" additivity="true">
+		<appender-ref ref="buinessisjms"></appender-ref>
+		&lt;!&ndash;
+		<appender-ref ref="STDOUT"></appender-ref>
+		&ndash;&gt;
+	</logger>
+    <logger name="TestController" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="INFO" />
+        <appender-ref ref="PAY" />
+    </logger>-->
+<!--	<logger name="com.ncvass.common.service" level="INFO" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="INFO" />
+	</logger>
+	
+	<logger name="com.ncvass.controller" level="INFO" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="INFO" />
+    </logger>-->
+    <!--容器中找不到任何TaskScheduler或ScheduledExecutorService bean，BeanFactory.getBean将抛出异常-->
+    <!--所以日志级别改为info -->
+    <logger name="org.springframework.scheduling">
+        <level value="info" />
+    </logger>
+
+    <!-- org包报的日志只显示error级别的，减少日志干扰 -->
+    <logger name="org" level="ERROR" />
+
+    <logger name="logback" additivity="false"/>
+
+ 	<root level="debug">
+	<!--<root level="info">-->
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="INFO" />
+	</root>
+</configuration>
