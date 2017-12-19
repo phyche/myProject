@@ -6,7 +6,7 @@
 	<bean id="apiHandlerClassMaps" class="java.util.HashMap">
 		<constructor-arg>
 			<map>
-				<entry key="100001" value="com.test.handler.common"></entry>
+				<entry key="100001" value="com.test.handler.myProject.OrderTestHandler"></entry>
 			</map>
 		</constructor-arg>
 	</bean>

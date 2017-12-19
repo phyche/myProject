@@ -6,41 +6,5 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<!-- 引入配置文件 -->
-	<!--<bean id="configuration" class="com.ncvas.base.utils.Configuration">
-		<property name="merKeyPath" value="${anjie.mer.keypath}" />
-		<property name="merStorepass" value="${anjie.mer.storepass}" />
-		<property name="merAlias" value="${anjie.mer.alias}" />
-		<property name="merPassword" value="${anjie.mer.password}" />
-		<property name="merPublicKey" value="${anjie.mer.publickey}" />
-		<property name="merCode" value="${anjie.mer.code}" />
-		<property name="merName" value="${anjie.mer.name}" />
-		<property name="merPrefix" value="${anjie.mer.prefix}" />
-		<property name="signType" value="${anjie.sign.type}" />
-		<property name="bankkeycerpath" value="${bank.nj.keycerpath}" />
-		<property name="bankkeystorepath" value="${bank.nj.keystorepath}" />
-		<property name="comMercialCode" value="${bank.nj.comMercialCode}" />
-		<property name="njpassword" value="${bank.nj.password}" />
-		<property name="njurl" value="${bank.nj.url}" />
-		<property name="sms_thrift_IP" value="${thrift.ip}" />
-		<property name="sms_thrift_Port" value="${thrift.port}" />
-		<property name="defaultPoolSize" value="${thrift.defaultPoolSize}" />
-		<property name="maxPoolSize" value="${thrift.maxPoolSize}" />
-		<property name="minPoolSize" value="${thrift.minPoolSize}" />
-		<property name="maxWait" value="${thrift.maxWait}" />
-		<property name="acquireIncrement" value="${thrift.acquireIncrement}" />
-		<property name="connectTimeOut" value="${thrift.connectTimeOut}" />
-		<property name="connectionErrorRetryTimes" value="${thrift.connectionErrorRetryTimes}" />
-		<property name="njccAesKey" value="${njccAesKey}" />
-	</bean>-->
 
-<!--	<bean id="messagePushConfig" class="com.ncvas.common.service.push.MessagePushConfig">
-		<property name="umeng_Android_Key" value="${UMENG.ANDROID.KEY}" />
-		<property name="umeng_Android_Master_Secret" value="${UMENG.ANDROID.MASTER.SECRET}" />
-		<property name="umeng_Android_Production_Mode" value="${UMENG.ANDROID.PRODUCTION.MODE}" />
-		<property name="umeng_Ios_Key" value="${UMENG.IOS.KEY}" />
-		<property name="umeng_Ios_Master_Secret" value="${UMENG.IOS.MASTER.SECRET}" />
-		<property name="umeng_Ios_Production_Mode" value="${UMENG.IOS.PRODUCTION.MODE}" />
-		<property name="umeng_Host" value="${UMENG.HOST}" />
-		<property name="alias_Type" value="${ALIAS_TYPE}" />
-	</bean>-->
 </beans>

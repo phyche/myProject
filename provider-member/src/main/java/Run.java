@@ -59,7 +59,7 @@ public class Run {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		System.out.println("dubbo justgo started....");
+		System.out.println("dubbo member started....");
 //		try {
 //			System.in.read();
 //		} catch (IOException e) {

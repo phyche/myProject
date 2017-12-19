@@ -8,7 +8,7 @@
 	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<dubbo:application name="justgoProviderService" />
+	<dubbo:application name="memberProviderService" />
 
 	<!-- 使用zookeeper广播注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="${zookeeperUrl}" timeout="${zookeeperTimeout}" register="false"/>
@@ -19,7 +19,7 @@
 	<!--引用公用service-->
 	<import resource="classpath*:conf/reference-dubbo-dev.xml" />
 
-	<dubbo:provider filter="exceptionFilter"></dubbo:provider>
+	<!--<dubbo:provider filter="exceptionFilter"></dubbo:provider>-->
 
 	<dubbo:service interface="com.test.member.service.MemberService" ref="memberService" version="${ver.test}" />
 	<bean id="memberService" class="com.test.common.service.impl.MemberServiceImpl" />

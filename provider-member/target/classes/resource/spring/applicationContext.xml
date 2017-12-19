@@ -10,24 +10,10 @@
 			            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 			            http://www.springframework.org/schema/aop
            	            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-	<context:component-scan base-package="com.test" />
-	<context:component-scan base-package="com.test.common.service.*.*" />
+	<context:component-scan base-package="com.test.*" />
+	<!--<context:component-scan base-package="com.test.common.service.**" />-->
 
 	<import resource="classpath*:conf/ini-data.xml" />
 	<import resource="classpath*:conf/spring-activemq.xml" />
 
-	<!--<bean id="exceptionAspect" class="com.just.common.aop.ExceptionAspect" />-->
-
-	<!--&lt;!&ndash; 配置参与事务的类 &ndash;&gt;-->
-	<!--<aop:config>-->
-		<!--<aop:pointcut id="commonServiceMethod"-->
-					  <!--expression="execution(* com.just.common.service.*.*(..))" />-->
-
-		<!--<aop:aspect id="aop_aspect_frisetclass" ref="exceptionAspect">-->
-			<!--&lt;!&ndash; 定义个After增强处理，直接指定切入点表达式，以切面 Bean 中的 Release() 方法作为增强处理方法 &ndash;&gt;-->
-			<!--&lt;!&ndash;<aop:around pointcut-ref="commonServiceMethod"  method="doAround"/>&ndash;&gt;-->
-			<!--<aop:around  pointcut-ref="commonServiceMethod" method="handlerControllerMethod" />-->
-
-		<!--</aop:aspect>-->
-	<!--</aop:config>-->
 </beans>
