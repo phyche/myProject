@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/jms/spring-jms-4.0.xsd">
 
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.test.common.mq.*" />
+	<context:component-scan base-package="com.test.common.mq.queue.*" />
 
 	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<!--<property name="brokerURL"
@@ -77,12 +77,12 @@
 	</bean>
 
 	<!-- 定义Topic监听器 -->
-	<!--<jms:listener-container destination-type="topic"
-		container-type="default" connection-factory="jmsFactory"
-		acknowledge="auto">
-		<jms:listener destination="testTopic" ref="topicReceiver1" />
-		<jms:listener destination="testTopic" ref="topicReceiver2" />
-	</jms:listener-container>-->
+	<jms:listener-container destination-type="queue"
+							container-type="default" connection-factory="jmsFactory"
+							acknowledge="auto" concurrency="${mq.concurrency}" task-executor="threadPoolTaskExecutor">
+
+	<jms:listener destination="jgOrdsTestDestination" ref="jgOrdsTestListener" />
+	</jms:listener-container>
 	<!-- 消息消费者 end -->
 
 </beans>

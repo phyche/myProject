@@ -24,8 +24,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Resource
     QueueSender queueSender;
-    @Value("#{configProperties['jgOrdsTestDestination']}")
-    protected String jgOrdsTestDestination;
     @Autowired
     private OrdsTestService ordsTestService;
     @Autowired
@@ -39,7 +37,7 @@ public class MemberServiceImpl implements MemberService {
         OrdsTest ordsTest = ordsTestService.doQuery(dto);
         Map<String, String> map = new HashMap<>();
         map.put("ordsTest", JsonUtils.toJson(ordsTest));
-        queueSender.sendMap(jgOrdsTestDestination, map);
+        queueSender.sendMap("jgOrdsTestDestination", map);
         return ordsTest;
     }
 

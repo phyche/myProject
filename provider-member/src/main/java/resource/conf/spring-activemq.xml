@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
         http://activemq.apache.org/schema/core">
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.test.common.*" />
+	<context:component-scan base-package="com.test.common.queue" />
 	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<!--<property name="brokerURL"
 			value="tcp://${mq.url}?jms.prefetchPolicy.all=10&amp;wireFormat.maxInactivityDurationInitalDelay=20000" />-->
@@ -46,7 +46,7 @@
 	<jms:listener-container destination-type="queue"
 		container-type="default" connection-factory="jmsFactory"
 		acknowledge="auto">
-		<!--<jms:listener destination="testQueue" ref="queueReceiverTest" />
+		<!--<jms:listener destination="testQueue" ref="jgOrdsTestDestination" />
 		<jms:listener destination="testQueueMap" ref="queueReceiverMap" />-->
 	</jms:listener-container>
 
