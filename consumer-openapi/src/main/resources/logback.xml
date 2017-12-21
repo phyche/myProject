@@ -97,13 +97,13 @@
     </appender>
 
     <!-- 用户行为日志JMS配置 -->
-	<appender name="behaviorjms" class="com.ncvas.log.UserBehaviorJMSQueueAppender">
+	<appender name="behaviorjms" class="com.myproject.log.UserBehaviorJMSQueueAppender">
 		 
 
 	</appender>
 	
 	 <!-- 用户业务日志JMS配置 -->
-	<appender name="buinessisjms" class="com.ncvas.log.UserBusinessJMSQueueAppender">
+	<appender name="buinessisjms" class="com.myproject.log.UserBusinessJMSQueueAppender">
 	   
 	</appender>
 	<!--  
